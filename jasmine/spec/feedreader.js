@@ -32,7 +32,7 @@ $(function() {
     * and that the URL is not empty.
     */
     it('defined a url that is not empty for each feed', function() {
-      allFeeds.forEach(function(feed){
+      allFeeds.forEach(function(feed) {
         expect(feed.url).toBeDefined();
         expect(feed.url.length).not.toBe(0);
       });
@@ -43,7 +43,7 @@ $(function() {
     * and that the name is not empty.
     */
     it('defined a name for each feed that is not empty', function() {
-      allFeeds.forEach(function(feed){
+      allFeeds.forEach(function(feed) {
         expect(feed.name).toBeDefined();
         expect(feed.name.length).not.toBe(0);
       });
@@ -59,7 +59,7 @@ $(function() {
     * the CSS to determine how we're performing the
     * hiding/showing of the menu element.
     */
-    it('should hide the menu by default', function(){
+    it('should hide the menu by default', function() {
       expect($('body').hasClass('menu-hidden')).toBe(true);
     });
 
@@ -79,7 +79,7 @@ $(function() {
   });
 
   /* TODO: Write a new test suite named "Initial Entries" */
-  describe('Initial Entries', function () {
+  describe('Initial Entries', function() {
 
     /* TODO: Write a test that ensures when the loadFeed
     * function is called and completes its work, there is at least
@@ -87,10 +87,12 @@ $(function() {
     * Remember, loadFeed() is asynchronous so this test will require
     * the use of Jasmine's beforeEach and asynchronous done() function.
     */
-    beforeEach(function (done) {
-      loadFeed (0, done);
+    beforeEach(function(done) {
+      loadFeed (0, function() {
+        done();
+      });
     });
-    it('should ensure the loadFeed calls at least one entry', function () {
+    it('should ensure the loadFeed calls at least one entry', function() {
       expect($('.feed .entry').length).toBeGreaterThan(0);
     });
   });
@@ -103,13 +105,15 @@ $(function() {
     * by the loadFeed function that the content actually changes.
     * Remember, loadFeed() is asynchronous.
     */
-    beforeEach(function (done) {
+    beforeEach(function(done) {
       //loads the first feed (second feed in the array)
-      loadFeed (1, done);
+      loadFeed (1, function() {
+        done();
+      });
       //saves the firstFeed loaded in the firstFeed variable
       firstFeed = $('.feed').html();
     });
-    it('should change the content when a new feed is loaded', function (done){
+    it('should change the content when a new feed is loaded', function(done) {
       //loads the second feed (third feed in the array)
       loadFeed (2);
       //checks second feed content against first feed content
