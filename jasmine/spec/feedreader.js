@@ -91,7 +91,7 @@ $(function() {
           //  done();
          });
          it('should ensure the loadFeed calls at least one entry', function () {
-            expect($('.entry, .feed').length).toBeGreaterThan(0);
+            expect($('.feed .entry').length).toBeGreaterThan(0);
          });
       });
 
