@@ -115,10 +115,11 @@ $(function() {
     });
     it('should change the content when a new feed is loaded', function(done) {
       //loads the second feed (third feed in the array)
-      loadFeed (2);
-      //checks second feed content against first feed content
-      expect($('.feed').html()).not.toEqual(firstFeed);
-      done();
+      loadFeed (2, function(){
+        //checks second feed content against first feed content
+        expect($('.feed').html()).not.toEqual(firstFeed);
+        done();
+      });
     });
   });
 }());
