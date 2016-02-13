@@ -69,8 +69,10 @@ $(function() {
           * clicked and does it hide when clicked again.
           */
           it('should hide or show the menu when clicked', function() {
+            //looks for menu to be shown
             $('.menu-icon-link').trigger('click');
             expect($('body').hasClass('menu-hidden')).toBe(false);
+            //looks for menu to be hidden
             $('.menu-icon-link').trigger('click');
             expect($('body').hasClass('menu-hidden')).toBe(true);
           });
@@ -88,7 +90,6 @@ $(function() {
          */
          beforeEach(function (done) {
             loadFeed (0, done);
-          //  done();
          });
          it('should ensure the loadFeed calls at least one entry', function () {
             expect($('.feed .entry').length).toBeGreaterThan(0);
@@ -104,11 +105,15 @@ $(function() {
          * Remember, loadFeed() is asynchronous.
          */
          beforeEach(function (done) {
+           //loads the first feed (second feed in the array)
            loadFeed (1, done);
+          //saves the firstFeed loaded in the firstFeed variable
            firstFeed = $('.feed').html();
          });
          it('should change the content when a new feed is loaded', function (done){
+          //loads the second feed (third feed in the array)
            loadFeed (2);
+           //checks second feed content against first feed content
            expect($('.feed').html()).not.toEqual(firstFeed);
            done();
          });
