@@ -110,8 +110,6 @@ $(function() {
         firstFeed = $('.feed').html();
         done();
       });
-      //saves the firstFeed loaded in the firstFeed variable
-      firstFeed = $('.feed').html();
     });
     it('should change the content when a new feed is loaded', function(done) {
       //loads the second feed (third feed in the array)
