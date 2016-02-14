@@ -106,6 +106,8 @@ $(function() {
     beforeEach(function(done) {
       //loads the first feed (second feed in the array)
       loadFeed (1, function() {
+        //saves the firstFeed loaded in the firstFeed variable
+        firstFeed = $('.feed').html();
         done();
       });
       //saves the firstFeed loaded in the firstFeed variable
